@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:21:02 by nmeunier          #+#    #+#             */
-/*   Updated: 2025/12/19 19:04:44 by nmeunier         ###   ########.fr       */
+/*   Updated: 2025/12/19 19:15:40 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	count_lines(char *map_path)
 	close(fd);
 	return (count);
 }
-
 char	**create_tab(char *map_path)
 {
 	char	**tab_map;
@@ -56,7 +55,19 @@ char	**create_tab(char *map_path)
 
 int		valid_map_border(char **tab_map)
 {
-	
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (tab_map[i][j])
+	{
+		while (tab_map[i][j] == '1')
+			j++;
+		else
+			return (0);
+	}
+	return (1);
 }
 
 int	main(void)
