@@ -6,44 +6,73 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:21:02 by nmeunier          #+#    #+#             */
-/*   Updated: 2025/12/19 16:22:44 by nmeunier         ###   ########.fr       */
+/*   Updated: 2025/12/19 19:04:44 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	**create_tab(int fd)
+int	count_lines(char *map_path)
 {
-	char	**tab_map;
+	int		count;
 	char	*buffer;
-	int		colonne;
-	int		ligne;
+	int		fd;
 
-	tab_map = 0;
-	buffer = 0;
-	ligne = 0;
-	colonne = 0;
+	fd = open(map_path, O_RDONLY);
+	count = 0;
 	buffer = get_next_line(fd);
 	while (buffer)
 	{
-		tab_map[ligne] = buffer;
-		ligne++;
+		count++;
+		free(buffer);
+		buffer = get_next_line(fd);
 	}
+	close(fd);
+	return (count);
+}
+
+char	**create_tab(char *map_path)
+{
+	char	**tab_map;
+	char	*buffer;
+	int		ligne;
+	int		fd;
+
+	tab_map = malloc(sizeof(char *) * (count_lines(map_path) + 1));
+	fd = open(map_path, O_RDONLY);
+	if (!tab_map)
+		return (0);
+	ligne = 0;
+	buffer = get_next_line(fd);
+	while (buffer)
+	{
+		tab_map[ligne++] = ft_strdup(buffer);
+		free(buffer);
+		buffer = get_next_line(fd);
+	}
+	tab_map[ligne] = NULL;
 	return (tab_map);
+}
+
+int		valid_map_border(char **tab_map)
+{
+	
 }
 
 int	main(void)
 {
 	int		fd;
 	int		i;
+	int		valid;
 	char	**map;
 
-	fd = open("maps.ber", O_RDONLY);
-	map = create_tab(fd);
+	valid = 0;
+	map = create_tab("maps.ber");
+	valid = valid_map_border(map);
 	i = 0;
 	while (map[i])
 	{
-		printf("%s\n", map[i]);
+		printf("%s", map[i]);
 		i++;
 	}
 }
