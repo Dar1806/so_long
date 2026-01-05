@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:21:02 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/05 14:17:41 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/05 16:46:47 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,17 @@ int	valid_map_border(char **tab_map)
 {
 	int		i;
 	int		j;
+	int		max;
 
-	i = 0;
-	j = 0;
-	while (tab_map[i][j])
+	i = -1;
+	while (tab_map[++i])
 	{
-		while (tab_map[i][j] == '1')
+		j = -1;
+		while (tab_map[i][++j])
 		{
-			if (tab_map[i][j] != '1')
+			if (tab_map[i][j] != '1' && i == 0)
 				return (0);
-			j++;
 		}
-		i++;
 	}
 	return (1);
 }
@@ -90,5 +89,5 @@ int	main(void)
 		printf("%s", map[i]);
 		i++;
 	}
-	printf("%d\n", valid);
+	printf("valid : %d\n", valid);
 }
