@@ -46,6 +46,8 @@ char	**create_tab(char *map_path)
 	buffer = get_next_line(fd);
 	while (buffer)
 	{
+		if (buffer[ft_strlen(buffer) - 1] == '\n')
+			buffer[ft_strlen(buffer) - 1] = '\0';
 		tab_map[ligne++] = ft_strdup(buffer);
 		free(buffer);
 		buffer = get_next_line(fd);
@@ -58,7 +60,6 @@ int	valid_map_border(char **tab_map)
 {
 	int		i;
 	int		j;
-	int		max;
 
 	i = -1;
 	while (tab_map[++i])
@@ -75,7 +76,6 @@ int	valid_map_border(char **tab_map)
 
 int	main(void)
 {
-	int		fd;
 	int		i;
 	int		valid;
 	char	**map;
@@ -86,7 +86,7 @@ int	main(void)
 	i = 0;
 	while (map[i])
 	{
-		printf("%s", map[i]);
+		printf("%s\n", map[i]);
 		i++;
 	}
 	printf("valid : %d\n", valid);
