@@ -17,7 +17,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdalign.h>
-# include "mlx/mlx.h"
 # include "gnl/get_next_line.h"
 # include "Libft/libft.h"
 
