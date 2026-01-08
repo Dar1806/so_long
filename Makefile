@@ -10,13 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = so_long.c parser_map.c gnl/get_next_line.c gnl/get_next_line_utils.c \
-		ft_strcpy.c copy_in_tab.c
+SRCS = parser_map.c gnl/get_next_line.c gnl/get_next_line_utils.c \
 
 CC = cc 
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -I./mlx
-LDFLAGS = -L./mlx -lmlx -lX11 -lXext
+CFLAGS = -Wall -Wextra -Werror
 
 NAME = so_long
 OBJS = $(SRCS:.c=.o)
