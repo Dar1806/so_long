@@ -58,17 +58,16 @@ char	**create_tab(char *map_path)
 
 int	valid_map_border(char **tab_map)
 {
-	int		i;
-	int		j;
-	int		last_line;
-	int		last_index;
+	int	i;
+	int	j;
+	int	last_line;
+	int	last_index;
 
 	i = 0;
-	j = 0;
-	last_line = 0;
 	while (tab_map[i])
 		i++;
 	last_line = i - 1;
+	j = 0;
 	while (tab_map[last_line][j])
 		j++;
 	last_index = j - 1;
@@ -77,12 +76,10 @@ int	valid_map_border(char **tab_map)
 	{
 		j = -1;
 		while (tab_map[i][++j])
-		{
-			if ((tab_map[i][j] != '1' && i == 0) || ((tab_map[i][j] != '1') && i == last_line))
+			if (((tab_map[i][j] != '1' && i == 0)
+				|| ((tab_map[i][j] != '1') && i == last_line)
+				|| ((tab_map[i][0] != '1') || (tab_map[i][last_index] != '1'))))
 				return (0);
-			if ((tab_map[i][0] != '1') || (tab_map[i][last_index] != '1'))
-				return (0);
-		}
 	}
 	return (1);
 }
