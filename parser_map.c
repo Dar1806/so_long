@@ -79,26 +79,58 @@ int	valid_map_border(char **tab_map)
 		while (tab_map[i][++j])
 			if (((tab_map[i][j] != '1' && i == 0)
 				|| ((tab_map[i][j] != '1') && i == last_line)
-				|| ((tab_map[i][0] != '1') || (tab_map[i][last_column] != '1'))))
+				|| ((tab_map[i][0] != '1')
+				|| (tab_map[i][last_column] != '1'))))
 				return (0);
 	}
 	return (1);
 }
 
+int	valid_map_pec(char **tab_map)
+{
+	int		i;
+	int		j;
+	int		valid_P;
+	int		valid_E;
+	int		valid_C;
+
+	valid_P = 0;
+	valid_E = 0;
+	valid_C = 0;
+	i = -1;
+	while (tab_map[++i])
+	{
+		j = -1;
+		while (tab_map[i][++j])
+		{
+			if (tab_map[i][j] == 'P')
+				valid_P++;
+			else if (tab_map[i][j] == 'C')
+				valid_C++;
+			else if (tab_map[i][j] == 'E')
+				valid_E++;
+		}																																	
+	}
+	return (valid_P == 1 && valid_E == 1 && valid_C >= 1);
+}
+
 int	main(void)
 {
 	int		i;
-	int		valid;
+	int		valid_border;
+	int		valid_pec;
 	char	**map;
 
-	valid = 0;
+	valid_border = 0;
 	map = create_tab("maps.ber");
-	valid = valid_map_border(map);
+	valid_border = valid_map_border(map);
+	valid_pec = valid_map_pec(map);
 	i = 0;
 	while (map[i])
 	{
 		printf("%s\n", map[i]);
 		i++;
 	}
-	printf("valid : %d\n", valid);
+	printf("valid_border : %d\n", valid_border);
+	printf("valid_pec : %d\n", valid_pec);
 }

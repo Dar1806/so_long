@@ -22,5 +22,4 @@
 
 char	**copy_in_tab(char **dst, const char *src, int ligne);
 
-
 #endif

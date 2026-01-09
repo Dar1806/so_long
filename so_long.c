@@ -11,16 +11,3 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-
-int		main()
-{
-	int	er;
-fd;
-	char	*buff
-	fd = open("maps.ber", O_RDONLY);
-	while ((buffer = get_next_line(fd)) != NULL)
-	{
-		printf("%s", buffer);
-	}
-}
