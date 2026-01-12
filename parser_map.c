@@ -132,5 +132,5 @@ int	main(void)
 		i++;
 	}
 	printf("valid_border : %d\n", valid_border);
-	printf("valid_pec : %d\n", valid_pec);
+	printf("valid_pec : %d\n", valid_pec  );
 }
