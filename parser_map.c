@@ -90,13 +90,13 @@ int	valid_map_pec(char **tab_map)
 {
 	int		i;
 	int		j;
-	int		valid_P;
-	int		valid_E;
-	int		valid_C;
+	int		valid_p;
+	int		valid_e;
+	int		valid_c;
 
-	valid_P = 0;
-	valid_E = 0;
-	valid_C = 0;
+	valid_p = 0;
+	valid_e = 0;
+	valid_c = 0;
 	i = -1;
 	while (tab_map[++i])
 	{
@@ -104,14 +104,14 @@ int	valid_map_pec(char **tab_map)
 		while (tab_map[i][++j])
 		{
 			if (tab_map[i][j] == 'P')
-				valid_P++;
+				valid_p++;
 			else if (tab_map[i][j] == 'C')
-				valid_C++;
+				valid_c++;
 			else if (tab_map[i][j] == 'E')
-				valid_E++;
+				valid_e++;
 		}																																	
 	}
-	return (valid_P == 1 && valid_E == 1 && valid_C >= 1);
+	return (valid_p == 1 && valid_e == 1 && valid_c >= 1);
 }
 
 int	main(void)
