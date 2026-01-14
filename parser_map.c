@@ -109,7 +109,7 @@ int	valid_map_pec(char **tab_map)
 				valid_c++;
 			else if (tab_map[i][j] == 'E')
 				valid_e++;
-		}																																	
+		}
 	}
 	return (valid_p == 1 && valid_e == 1 && valid_c >= 1);
 }
@@ -132,5 +132,5 @@ int	main(void)
 		i++;
 	}
 	printf("valid_border : %d\n", valid_border);
-	printf("valid_pec : %d\n", valid_pec  );
+	printf("valid_pec : %d\n", valid_pec);
 }
