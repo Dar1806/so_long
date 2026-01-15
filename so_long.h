@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 11:27:58 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/15 14:06:13 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/15 15:28:36 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 char	**copy_in_tab(char **dst, const char *src, int ligne);
 char	**create_tab(char *map_path);
 int		valid_map_border(char **tab_map);
+int		valid_map_border(char **tab_map);
+int		valid_map_pec(char **tab_map);
+
 
 
 #endif
