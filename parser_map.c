@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:21:02 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/15 15:30:59 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/15 15:32:45 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,21 @@ int	valid_map_letters(char **tab_map)
 	int	i;
 	int	j;
 
-	i = -1;
-	while (tab_map[i++])
+	i = 0;
+	while (tab_map[i])
 	{
-		j = -1;
-		while (tab_map[i][j++])
+		j = 0;
+		while (tab_map[i][j])
+		{
 			if (tab_map[i][j] != '1'
-			|| tab_map[i][j] != '0'
-			|| tab_map[i][j] != 'P'
-			|| tab_map[i][j] != 'E'
-			|| tab_map[i][j] != 'C')
+				|| tab_map[i][j] != '0'
+				|| tab_map[i][j] != 'P'
+				|| tab_map[i][j] != 'E'
+				|| tab_map[i][j] != 'C')
 				return (0);
+			j++;
+			}
+			i++;
 	}
 	return (1);
 }
@@ -62,6 +66,8 @@ void	map_valid(char **tab_map)
 		ft_putstr_fd("pec not valid\n", 1);
 	if (!valid_map_size(tab_map))
 		ft_putstr_fd("size not valid\n", 1);
+	if (!valid_map_letters(tab_map))
+		ft_putstr_fd("letters not valid\n", 1);
 	
 }
 
