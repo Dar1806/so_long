@@ -6,69 +6,91 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:21:02 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/15 16:01:31 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/15 18:30:52 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	valid_map_size(char **tab_map)
+int	replace_p(char *n, char *s, char *w, char *e)
+{
+	int	change;
+
+	change = 0;
+	if (*n == '0' || *n == 'C')
+	{
+		*n = 'P';
+		change++;
+	}
+	if (*s == '0' || *s == 'C')
+	{
+		*s = 'P';
+		change++;
+	}
+	if (*w == '0' || *w == 'C')
+	{
+		*w = 'P';
+		change++;
+	}
+	if (*e == '0' || *e == 'C')
+	{
+		*e = 'P';
+		change++;
+	}
+	return (change);
+}
+
+int	valid_map_stuck(char **tab_map)
 {
 	int	i;
 	int	j;
-	int	max;
+	int	change;
 
-	max = 0;
-	while (tab_map[i][max])
-	max++;
+	change = 1;
+	while (change != 0)
+	{
+		i = -1;
+		change = 0;
+		while (tab_map[++i + 1])
+		{
+			j = -1;
+			while (tab_map[i][++j + 1])
+			{
+				if (tab_map[i][j] == 'P')
+				{
+					change += replace_p(&tab_map[i - 1][j], &tab_map[i + 1][j],
+							&tab_map[i][j - 1], &tab_map[i][j + 1]);
+				}
+			}
+		}
+	}
+	return (valid_map_check_c(tab_map));
+}
+
+int	valid_map_check_c(char **tab_map)
+{
+	int	i;
+	int	j;
+
 	i = -1;
 	while (tab_map[++i])
 	{
-		j = 0;
-		while (tab_map[i][j])
-			j++;
-		if (j != max)
-			return (0);
-	}
-	i = -1;
-	return (1);
-}
-
-int	valid_map_letters(char **tab_map)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while (tab_map[i++])
-	{
-		j = 0;
-		while (tab_map[i][j])
+		j = -1;
+		while (tab_map[i][++j])
 		{
-			if (tab_map[i][j] != '1'
-				|| tab_map[i][j] != '0'
-				|| tab_map[i][j] != 'P'
-				|| tab_map[i][j] != 'E'
-				|| tab_map[i][j] != 'C')
+			if (tab_map[i][j] == 'C')
 				return (0);
-			j++;
+			if (tab_map[i][j] == 'E')
+			{
+				if (tab_map[i - 1][j] != 'P'
+					&& tab_map[i + 1][j] != 'P'
+					&& tab_map[i][j - 1] != 'P'
+					&& tab_map[i][j + 1] != 'P')
+					return (0);
+			}
 		}
 	}
 	return (1);
-}
-
-void	map_valid(char **tab_map)
-{
-	if (!valid_map_border(tab_map))
-		ft_putstr_fd("border not valid\n", 1);
-	if (!valid_map_pec(tab_map))
-		ft_putstr_fd("pec not valid\n", 1);
-	if (!valid_map_size(tab_map))
-		ft_putstr_fd("size not valid\n", 1);
-	if (!valid_map_letters(tab_map))
-		ft_putstr_fd("letters not valid\n", 1);
-	else
-		ft_putstr_fd("map is valid", 1);
 }
 
 int	main(void)
@@ -77,11 +99,11 @@ int	main(void)
 	int		i;
 
 	tab_map = create_tab("maps.ber");
+	map_valid(tab_map);
 	i = 0;
 	while (tab_map[i])
 	{
 		printf("%s\n", tab_map[i]);
 		i++;
 	}
-	map_valid(tab_map);
 }
