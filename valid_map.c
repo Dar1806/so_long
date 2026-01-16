@@ -76,8 +76,9 @@ int	valid_map_size(char **tab_map)
 	int	max;
 
 	max = 0;
+	i = 0;
 	while (tab_map[i][max])
-	max++;
+		max++;
 	i = -1;
 	while (tab_map[++i])
 	{
@@ -87,7 +88,6 @@ int	valid_map_size(char **tab_map)
 		if (j != max)
 			return (0);
 	}
-	i = -1;
 	return (1);
 }
 
@@ -118,15 +118,15 @@ int	valid_map_letters(char **tab_map)
 void	map_valid(char **tab_map)
 {
 	if (!valid_map_border(tab_map))
-		ft_putstr_fd("border not valid\n", 1);
+		ft_putstr_fd("The map is not surrounded by walls (1)\n", 1);
 	else if (!valid_map_pec(tab_map))
-		ft_putstr_fd("pec not valid\n", 1);
+		ft_putstr_fd("The map does not contains the valid PEC\n", 1);
 	else if (!valid_map_size(tab_map))
-		ft_putstr_fd("size not valid\n", 1);
+		ft_putstr_fd("The size of the map is not valid\n", 1);
 	else if (!valid_map_letters(tab_map))
-		ft_putstr_fd("letters not valid\n", 1);
+		ft_putstr_fd("Theres not only 01PEC characters\n", 1);
 	else if (!valid_map_stuck(tab_map))
-		ft_putstr_fd("Collectibles not valid\n", 1);
+		ft_putstr_fd("The player cannot take all of the C\n", 1);
 	else
-		ft_putstr_fd("map is valid\n", 1);
+		ft_putstr_fd("The map is valid\n", 1);
 }
