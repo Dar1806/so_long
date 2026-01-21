@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 11:27:58 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/15 18:25:02 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/21 14:37:36 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <stdalign.h>
 # include "gnl/get_next_line.h"
-# include "Libft/libft.h"
+# include "libft/libft.h"
 
 char	**copy_in_tab(char **dst, const char *src, int ligne);
 char	**create_tab(char *map_path);

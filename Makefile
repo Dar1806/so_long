@@ -6,18 +6,19 @@
 #    By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/19 11:27:45 by nmeunier          #+#    #+#              #
-#    Updated: 2026/01/19 17:15:32 by nmeunier         ###   ########.fr        #
+#    Updated: 2026/01/21 14:37:17 by nmeunier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = parser_map.c create_tab.c valid_map.c gnl/get_next_line.c gnl/get_next_line_utils.c
+SRCS = src/parser_map.c src/create_tab.c src/valid_map.c gnl/get_next_line.c \
+		gnl/get_next_line_utils.c
 
 CC = cc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 
-INCLUDES = -I. -I./gnl  -I./Libft
-LIBFT = Libft/libft.a
+INCLUDES = -I. -I./gnl  -I./libft
+LIBFT = libft/libft.a
 
 NAME = so_long
 OBJS = $(SRCS:.c=.o)
@@ -25,7 +26,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(LIBFT) $(NAME)
 
 $(LIBFT):
-	$(MAKE) -C Libft
+	$(MAKE) -C libft
 
 $(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
@@ -35,11 +36,11 @@ $(NAME): $(OBJS) $(LIBFT)
 
 clean:
 	$(RM) $(OBJS)
-	$(MAKE) -C Libft clean
+	$(MAKE) -C libft clean
 
 fclean: clean
 	$(RM) $(NAME)
-	$(MAKE) -C Libft fclean
+	$(MAKE) -C libft fclean
 
 re: fclean all
 
