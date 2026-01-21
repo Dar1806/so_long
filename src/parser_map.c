@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:21:02 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/21 14:35:32 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:03:05 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,17 +93,3 @@ int	valid_map_check_c(char **tab_map)
 	return (1);
 }
 
-int	main(void)
-{
-	char	**tab_map;
-	int		i;
-
-	tab_map = create_tab("maps.ber");
-	map_valid(tab_map);
-	i = 0;
-	while (tab_map[i])
-	{
-		printf("%s\n", tab_map[i]);
-		i++;
-	}
-}

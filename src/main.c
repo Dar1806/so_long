@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 18:51:57 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/21 15:01:46 by nmeunier         ###   ########.fr       */
+/*   Created: 2026/01/21 15:03:22 by nmeunier          #+#    #+#             */
+/*   Updated: 2026/01/21 15:32:12 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/so_long.h"
+#include "../mlx/mlx.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+int	main(int ac, char **av)
 {
-	size_t	i;
-	size_t	src_len;
+	char	**tab_map;
+/* 	void	*mlx;
+	void	*mlx_window; */
 
-	src_len = ft_strlen(src);
-	if (size == 0)
-		return (src_len);
-	i = 0;
-	while (src[i] && i < size - 1)
+	if (ac == 2)
 	{
-		dst[i] = src[i];
-		i++;
+
+		tab_map = create_tab(av[1]);
+		if (!tab_map)
+		{
+			ft_putstr_fd("Map does not exist\n", 1);
+			return (0);
+		}
+/* 		mlx = mlx_init();
+		mlx_window = mlx_new_window(mlx, 500, 500, "test");
+		mlx_loop(mlx); */
 	}
-	dst[i] = '\0';
-	return (src_len);
+	return (0);
 }
