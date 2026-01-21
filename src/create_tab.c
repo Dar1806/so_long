@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:06:42 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/21 15:16:21 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:39:14 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ char	**create_tab(char *map_path)
 	int		ligne;
 	int		fd;
 
-	tab_map = malloc(sizeof(char *) * (count_lines(map_path) + 1));
 	fd = open(map_path, O_RDONLY);
+	if (fd < 0)
+		return (NULL);
+	tab_map = malloc(sizeof(char *) * (count_lines(map_path) + 1));
 	if (!tab_map)
 		return (0);
 	ligne = 0;
@@ -54,6 +56,5 @@ char	**create_tab(char *map_path)
 		ligne++;
 	}
 	tab_map[ligne] = NULL;
-	close (fd);
 	return (tab_map);
 }

@@ -6,17 +6,17 @@
 #    By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/19 11:27:45 by nmeunier          #+#    #+#              #
-#    Updated: 2026/01/21 15:05:56 by nmeunier         ###   ########.fr        #
+#    Updated: 2026/01/21 17:07:22 by nmeunier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = src/parser_map.c src/create_tab.c src/valid_map.c gnl/get_next_line.c \
 		gnl/get_next_line_utils.c libft/ft_putstr_fd.c libft/ft_strlcpy.c \
-		libft/ft_strtrim.c src/main.c
+		libft/ft_strtrim.c src/main.c src/mlx_init.c
 
 CC = cc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 X11_LIB = -lXext -lX11 -lm -lz
 MLXLIB = -Lmlx -lmlx
 

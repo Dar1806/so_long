@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 18:02:30 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/21 14:33:07 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/21 17:02:31 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,16 +117,22 @@ int	valid_map_letters(char **tab_map)
 
 void	map_valid(char **tab_map)
 {
-	if (!valid_map_border(tab_map))
-		ft_putstr_fd("Error\nThe map is not surrounded by walls (1)\n", 1);
-	else if (!valid_map_pec(tab_map))
-		ft_putstr_fd("Error\nThe map does not contains the valid PEC\n", 1);
-	else if (!valid_map_size(tab_map))
-		ft_putstr_fd("Error\nThe size of the map is not valid\n", 1);
-	else if (!valid_map_letters(tab_map))
-		ft_putstr_fd("Error\nTheres not only 01PEC characters\n", 1);
-	else if (!valid_map_stuck(tab_map))
-		ft_putstr_fd("Error\nThe player cannot take all of the C\n", 1);
+	if (!valid_map_border(tab_map) || !valid_map_pec(tab_map)
+		|| !valid_map_size(tab_map) || !valid_map_letters(tab_map)
+		|| !valid_map_stuck(tab_map))
+	{
+		ft_putstr_fd("Error\n", 1);
+		if (!valid_map_border(tab_map))
+			ft_putstr_fd("The map is not surrounded by walls\n", 1);
+		if (!valid_map_pec(tab_map))
+			ft_putstr_fd("The map does not contains the valid PEC\n", 1);
+		if (!valid_map_size(tab_map))
+			ft_putstr_fd("The size of the map is not valid\n", 1);
+		if (!valid_map_letters(tab_map))
+			ft_putstr_fd("Theres not only 01PEC characters\n", 1);
+		if (!valid_map_stuck(tab_map))
+			ft_putstr_fd("The player cannot take all of the C\n", 1);
+	}
 	else
 		ft_putstr_fd("The map is valid\n", 1);
 }
