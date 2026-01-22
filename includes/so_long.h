@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 11:27:58 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/21 17:58:52 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/22 17:28:01 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		valid_map_size(char **tab_map);
 int		valid_map_letters(char **tab_map);
 int		valid_map_stuck(char **tab_map);
 int		valid_map_check_c(char **tab);
-void	map_valid(char **tab_map);
+int		map_valid(char **tab_map);
 void	mlx_create(void);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
