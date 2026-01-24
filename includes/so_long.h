@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 11:27:58 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/22 17:28:01 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/24 18:13:30 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 # include "libft.h"
 # include "../mlx/mlx.h"
 
-typedef struct s_game {
+typedef struct s_game
+{
 	char	**map_mlx;
 }				t_game;
 
@@ -35,5 +36,8 @@ int		valid_map_stuck(char **tab_map);
 int		valid_map_check_c(char **tab);
 int		map_valid(char **tab_map);
 void	mlx_create(char **tab_map);
+void	create_ground(void *mlx, void *mlx_window, t_game *game);
+void	create_wall(void *mlx, void *mlx_window, t_game *game);
+void	create_p(void *mlx, void *mlx_window, t_game *game);
 
 #endif
