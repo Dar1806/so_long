@@ -34,11 +34,9 @@ $(NAME): $(OBJS)
 
 clean:
 	$(RM) $(OBJS)
-	$(MAKE) -C libft clean
 
 fclean: clean
 	$(RM) $(NAME)
-	$(MAKE) -C libft fclean
 
 re: fclean all
 

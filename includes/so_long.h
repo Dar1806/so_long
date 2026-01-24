@@ -41,11 +41,4 @@ int		map_valid(char **tab_map);
 void	mlx_create(void);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
-
-
-
-
-
-
-
 #endif
