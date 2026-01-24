@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 11:27:58 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/24 18:13:30 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/24 19:53:19 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,21 @@
 # include "libft.h"
 # include "../mlx/mlx.h"
 
-typedef struct s_game
-{
-	char	**map_mlx;
-}				t_game;
-
+void	create_ground(void *mlx, void *mlx_window, char **tab_map);
+void	create_wall(void *mlx, void *mlx_window, char **tab_map);
+void	create_p(void *mlx, void *mlx_window, char **tab_map);
+void	create_c(void *mlx, void *mlx_window, char **tab_map);
+void	create_e(void *mlx, void *mlx_window, char **tab_map);
 char	**copy_in_tab(char **dst, const char *src, int ligne);
-char	**create_tab(char *map_path);
-int		valid_map_border(char **tab_map);
-int		valid_map_pec(char **tab_map);
-int		valid_map_size(char **tab_map);
+void	get_map_size(char **tab_map, int *i, int *j);
 int		valid_map_letters(char **tab_map);
+int		valid_map_border(char **tab_map);
 int		valid_map_stuck(char **tab_map);
+int		valid_map_size(char **tab_map);
+int		valid_map_pec(char **tab_map);
 int		valid_map_check_c(char **tab);
-int		map_valid(char **tab_map);
+char	**create_tab(char *map_path);
 void	mlx_create(char **tab_map);
-void	create_ground(void *mlx, void *mlx_window, t_game *game);
-void	create_wall(void *mlx, void *mlx_window, t_game *game);
-void	create_p(void *mlx, void *mlx_window, t_game *game);
+int		map_valid(char **tab_map);
 
 #endif
