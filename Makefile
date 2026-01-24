@@ -27,7 +27,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C mlx
-	$(CC) $(CFLAGS) $(OBJS) $(X11_LIB) $(MLXLIB) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(MLXLIB) $(X11_LIB) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I/usr/include -Imlx -O3 -c $< -o $@

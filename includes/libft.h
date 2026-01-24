@@ -22,7 +22,7 @@
 
 int		ft_strlen(const char *str);
 char	*ft_strtrim(char const *s1, char const *set);
-void	ft_putstr_fd(char *s, int fd);
+int		ft_putstr_fd(char *s, int fd);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
 #endif
