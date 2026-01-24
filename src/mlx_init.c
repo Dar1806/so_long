@@ -12,27 +12,69 @@
 
 #include "../includes/so_long.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
 
-	dst = data->address + (y * data->line_length + x
-			* (data->bits_per_pixel / 8));
-	*(unsigned int *) dst = color;
+void	create_wall(void *mlx, void *mlx_window, t_game *game)
+{
+	int		width;
+	int		height;
+	void	*img_wall;
+	int		i;
+	int		j;
+	
+	img_wall = mlx_xpm_file_to_image(mlx, "./maps/wall.xpm", &width, &height);
+	if (!img_wall)
+	{
+		ft_putstr_fd("Error: Could not load image\n", 2);
+		return ;
+	}
+	i = -1;
+	while (game->map_mlx[++i])
+	{
+		j = -1;
+		while (game->map_mlx[i][++j])
+		{
+			if (game->map_mlx[i][j] == '1')
+				mlx_put_image_to_window(mlx, mlx_window, img_wall, j * 48, i * 48);
+		}
+	}
 }
 
-void	mlx_create(void)
+void	create_ground(void *mlx, void *mlx_window, t_game *game)
+{
+	int		width;
+	int		height;
+	void	*img_ground;
+	int		i;
+	int		j;
+	
+	img_ground = mlx_xpm_file_to_image(mlx, "./maps/ground.xpm", &width, &height);
+	if (!img_ground)
+	{
+		ft_putstr_fd("Error: Could not load image\n", 2);
+		return ;
+	}
+	i = -1;
+	while (game->map_mlx[++i])
+	{
+		j = -1;
+		while (game->map_mlx[i][++j])
+		{
+			if (game->map_mlx[i][j] == '0')
+				mlx_put_image_to_window(mlx, mlx_window, img_ground, j * 48, i * 48);
+		}
+	}
+}
+
+void	mlx_create(char **tab_map)
 {
 	void	*mlx;
 	void	*mlx_window;
-	t_data	img;
+	t_game	game;
 
+	game.map_mlx = tab_map;
 	mlx = mlx_init();
-	mlx_window = mlx_new_window(mlx, 1920, 1080, "test");
-	img.img = mlx_new_image(mlx, 1920, 1080);
-	img.address = mlx_get_data_addr(img.img, &img.bits_per_pixel,
-			&img.line_length, &img.endian);
-	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
-	mlx_put_image_to_window(mlx, mlx_window, img.img, 0, 0);
+	mlx_window = mlx_new_window(mlx, 1920, 1080, "Game");
+	create_ground(mlx, mlx_window, &game);
+	create_wall(mlx, mlx_window, &game);
 	mlx_loop(mlx);
 }

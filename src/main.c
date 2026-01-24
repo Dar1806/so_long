@@ -25,7 +25,10 @@ int	main(int ac, char **av)
 			return (0);
 		}
 		if (map_valid(tab_map))
-			mlx_create();
+		{
+			tab_map = create_tab(av[1]);
+			mlx_create(tab_map);
+		}
 	}
 	return (0);
 }

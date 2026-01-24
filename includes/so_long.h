@@ -21,13 +21,9 @@
 # include "libft.h"
 # include "../mlx/mlx.h"
 
-typedef struct s_data {
-	void	*img;
-	char	*address;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+typedef struct s_game {
+	char	**map_mlx;
+}				t_game;
 
 char	**copy_in_tab(char **dst, const char *src, int ligne);
 char	**create_tab(char *map_path);
@@ -38,7 +34,6 @@ int		valid_map_letters(char **tab_map);
 int		valid_map_stuck(char **tab_map);
 int		valid_map_check_c(char **tab);
 int		map_valid(char **tab_map);
-void	mlx_create(void);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	mlx_create(char **tab_map);
 
 #endif
