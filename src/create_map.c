@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 17:54:56 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/26 16:49:46 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/26 21:45:40 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,15 @@
 
 void	create_wall(t_game *g)
 {
-	int		width;
-	int		height;
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	g->img_wall = mlx_xpm_file_to_image(g->mlx,
-			"./images/wall.xpm", &width, &height);
+			"./images/wall.xpm", &g->width, &g->height);
 	if (!g->img_wall)
 	{
 		ft_putstr_fd("Error\n Could not load image\n", 2);
+		destroy_w(g);
 		return ;
 	}
 	i = -1;
@@ -41,16 +40,15 @@ void	create_wall(t_game *g)
 
 void	create_ground(t_game *g)
 {
-	int		width;
-	int		height;
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	g->img_ground = mlx_xpm_file_to_image(g->mlx,
-			"./images/ground.xpm", &width, &height);
+			"./images/ground.xpm", &g->width, &g->height);
 	if (!g->img_ground)
 	{
 		ft_putstr_fd("Error\n Could not load image\n", 2);
+		destroy_w(g);
 		return ;
 	}
 	i = -1;
@@ -68,18 +66,17 @@ void	create_ground(t_game *g)
 
 void	create_p(t_game *g)
 {
-	int		width;
-	int		height;
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	g->img_pigeon_left = mlx_xpm_file_to_image(g->mlx,
-			"./images/pigeon_left.xpm", &width, &height);
+			"./images/pigeon_left.xpm", &g->width, &g->height);
 	g->img_pigeon_right = mlx_xpm_file_to_image(g->mlx,
-			"./images/pigeon_right.xpm", &width, &height);
+			"./images/pigeon_right.xpm", &g->width, &g->height);
 	if (!g->img_pigeon_left || !g->img_pigeon_right)
 	{
 		ft_putstr_fd("Error\n Could not load image\n", 2);
+		destroy_w(g);
 		return ;
 	}
 	i = -1;
@@ -97,16 +94,15 @@ void	create_p(t_game *g)
 
 void	create_c(t_game *g)
 {
-	int		width;
-	int		height;
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	g->img_collectible = mlx_xpm_file_to_image(g->mlx,
-			"./images/collectible.xpm", &width, &height);
+			"./images/collectible.xpm", &g->width, &g->height);
 	if (!g->img_collectible)
 	{
 		ft_putstr_fd("Error\n Could not load image\n", 2);
+		destroy_w(g);
 		return ;
 	}
 	i = -1;
@@ -124,16 +120,15 @@ void	create_c(t_game *g)
 
 void	create_e(t_game *g)
 {
-	int		width;
-	int		height;
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	g->img_exit = mlx_xpm_file_to_image(g->mlx, "./images/exit.xpm",
-			&width, &height);
+			&g->width, &g->height);
 	if (!g->img_exit)
 	{
 		ft_putstr_fd("Error\n Could not load image\n", 2);
+		destroy_w(g);
 		return ;
 	}
 	i = -1;
