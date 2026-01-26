@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:40:44 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/26 21:36:26 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/26 22:57:19 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	mlx_create(t_game *g)
 	create_p(g);
 	create_c(g);
 	create_e(g);
-	v_e(g);
+	track_exit(g);
 	mlx_key_hook(g->mlx_window, key_handler, g);
 	mlx_hook(g->mlx_window, 17, 0, destroy_w, g);
 	mlx_loop(g->mlx);
@@ -73,16 +73,5 @@ int	destroy_w(t_game *g)
 {
 	free_all(g);
 	exit(0);
-	return (0);
-}
-
-int	v_e(t_game *g)
-{
-	if (valid_map_check_c(g->map))
-	{
-		ft_putstr_fd("You won!\n", 1);
-		destroy_w(g);
-		return (1);
-	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 11:27:58 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/26 21:42:49 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/26 23:01:34 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_game
 	int		move_count;
 	int		width;
 	int		height;
+	int		exit_j;
+	int		exit_i;
 }	t_game;
 
 char	**copy_in_tab(char **dst, const char *src, int ligne);
@@ -60,6 +62,8 @@ void	create_ground(t_game *g);
 void	create_wall(t_game *g);
 void	free_all(t_game *game);
 void	mlx_create(t_game *g);
+void	track_exit(t_game *g);
+int		verif_exit(t_game *g);
 int		move_right(t_game *g);
 int		destroy_w(t_game *g);
 int		move_down(t_game *g);
@@ -69,6 +73,5 @@ void	create_p(t_game *g);
 void	create_c(t_game *g);
 void	create_e(t_game *g);
 int		move_up(t_game *g);
-int		v_e(t_game *g);
 
 #endif
