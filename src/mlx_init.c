@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:40:44 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/26 22:57:19 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/26 23:39:26 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,17 @@ int	destroy_w(t_game *g)
 	free_all(g);
 	exit(0);
 	return (0);
+}
+
+void	free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
 }

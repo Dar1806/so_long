@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:21:07 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/26 23:05:10 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/26 23:39:21 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,4 @@ int	key_handler(int keycode, t_game *g)
 	ft_putnbr_fd(g->move_count, 1);
 	ft_putchar_fd('\n', 1);
 	return (0);
-}
-
-void	free_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
 }
