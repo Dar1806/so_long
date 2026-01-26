@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:40:44 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/26 19:14:27 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/26 21:06:55 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	destroy_w(t_game *g)
 int	v_e(t_game *g)
 {
 	if (valid_map_check_c(g->map))
-	{		
+	{
 		ft_putstr_fd("You won!\n", 1);
 		destroy_w(g);
 		return (1);

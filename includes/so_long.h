@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 11:27:58 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/26 19:15:01 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/26 21:09:43 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ typedef struct s_game
 }	t_game;
 
 char	**copy_in_tab(char **dst, const char *src, int ligne);
+int		load_verif_map(t_game *game, char *map_path);
 void	get_map_size(t_game *g, int *i, int *j);
-void	free_all(t_game *game);
 int		key_handler(int keycode, t_game *g);
 int		valid_map_letters(char **tab_map);
 int		valid_map_border(char **tab_map);
@@ -56,16 +56,17 @@ char	**create_tab(char *map_path);
 int		map_valid(char **tab_map);
 void	create_ground(t_game *g);
 void	create_wall(t_game *g);
+void	free_all(t_game *game);
 void	mlx_create(t_game *g);
 int		move_right(t_game *g);
 int		destroy_w(t_game *g);
 int		move_down(t_game *g);
+void	free_tab(char **tab);
 int		move_left(t_game *g);
 void	create_p(t_game *g);
 void	create_c(t_game *g);
 void	create_e(t_game *g);
 int		move_up(t_game *g);
 int		v_e(t_game *g);
-void	free_tab(char **tab);
 
 #endif

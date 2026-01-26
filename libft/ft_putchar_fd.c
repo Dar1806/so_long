@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 16:12:30 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/26 16:23:13 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/26 20:56:15 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, 1);
+	int	ret;
+	
+	ret =write(fd, &c, 1);
+	(void)ret;
 }

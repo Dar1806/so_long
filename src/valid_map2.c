@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_map.c                                       :+:      :+:    :+:   */
+/*   valid_map2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:21:02 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/22 17:33:19 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/26 21:09:38 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,25 @@ int	valid_map_check_c(char **tab_map)
 			}
 		}
 	}
+	return (1);
+}
+
+int	load_verif_map(t_game *game, char *map_path)
+{
+	char	**tab_map;
+
+	tab_map = create_tab(map_path);
+	if (!tab_map)
+	{
+		ft_putstr_fd("Error\nMap does not exist\n", 1);
+		return (0);
+	}
+	if (!map_valid(tab_map))
+	{
+		free_tab(tab_map);
+		return (0);
+	}
+	free_tab(tab_map);
+	game->map = create_tab(map_path);
 	return (1);
 }
