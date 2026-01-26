@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:03:22 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/26 21:16:43 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/26 21:20:42 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	if (load_verif_map(game, av[1]))
-		mlx_create(game);
+		mlx_create(game);	
 	else
 		free(game);
 	return (0);
