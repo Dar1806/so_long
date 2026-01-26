@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 17:54:56 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/26 16:40:23 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:49:46 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,11 @@ void	create_p(t_game *g)
 	int		i;
 	int		j;
 
-	g->img_pigeon = mlx_xpm_file_to_image(g->mlx,
-			"./images/pigeon.xpm", &width, &height);
-	if (!g->img_pigeon)
+	g->img_pigeon_left = mlx_xpm_file_to_image(g->mlx,
+			"./images/pigeon_left.xpm", &width, &height);
+	g->img_pigeon_right = mlx_xpm_file_to_image(g->mlx,
+			"./images/pigeon_right.xpm", &width, &height);
+	if (!g->img_pigeon_left || !g->img_pigeon_right)
 	{
 		ft_putstr_fd("Error\n Could not load image\n", 2);
 		return ;
@@ -88,7 +90,7 @@ void	create_p(t_game *g)
 		{
 			if (g->map[i][j] == 'P')
 				mlx_put_image_to_window(g->mlx, g->mlx_window,
-					g->img_pigeon, j * 48, i * 48);
+					g->img_pigeon_left, j * 48, i * 48);
 		}
 	}
 }

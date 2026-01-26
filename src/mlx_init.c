@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:40:44 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/26 16:40:52 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:12:17 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,18 @@ void	mlx_create(t_game *g)
 	mlx_key_hook(g->mlx_window, key_handler, g);
 	mlx_hook(g->mlx_window, 17, 0, destroy_w, NULL);
 	mlx_loop(g->mlx);
+}
+
+void	free_all(char **tab_map, t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (tab_map[i])
+	{
+		free(tab_map[i]);
+		i++;
+	}
+	free(tab_map);
+	free(game);
 }

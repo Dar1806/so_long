@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 15:28:07 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/26 16:39:43 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:50:18 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	move_left(t_game *g)
 				{
 					g->map[i][j -1] = 'P';
 					mlx_put_image_to_window(g->mlx, g->mlx_window,
-						g->img_pigeon, (j -1) * 48, i * 48);
+						g->img_pigeon_left, (j -1) * 48, i * 48);
 					mlx_put_image_to_window(g->mlx, g->mlx_window,
 						g->img_ground, j * 48, i * 48);
 					g->map[i][j] = '0';
@@ -58,7 +58,7 @@ int	move_right(t_game *g)
 				{
 					g->map[i][j + 1] = 'P';
 					mlx_put_image_to_window(g->mlx, g->mlx_window,
-						g->img_pigeon, (j + 1) * 48, i * 48);
+						g->img_pigeon_right, (j + 1) * 48, i * 48);
 					mlx_put_image_to_window(g->mlx, g->mlx_window,
 						g->img_ground, j * 48, i * 48);
 					g->map[i][j] = '0';
@@ -87,7 +87,7 @@ int	move_up(t_game *g)
 				{
 					g->map[i - 1][j] = 'P';
 					mlx_put_image_to_window(g->mlx, g->mlx_window,
-						g->img_pigeon, j * 48, (i - 1) * 48);
+						g->img_pigeon_left, j * 48, (i - 1) * 48);
 					mlx_put_image_to_window(g->mlx, g->mlx_window,
 						g->img_ground, j * 48, i * 48);
 					g->map[i][j] = '0';
@@ -116,7 +116,7 @@ int	move_down(t_game *g)
 				{
 					g->map[i + 1][j] = 'P';
 					mlx_put_image_to_window(g->mlx, g->mlx_window,
-						g->img_pigeon, j * 48, (i + 1) * 48);
+						g->img_pigeon_left, j * 48, (i + 1) * 48);
 					mlx_put_image_to_window(g->mlx, g->mlx_window,
 						g->img_ground, j * 48, i * 48);
 					g->map[i][j] = '0';

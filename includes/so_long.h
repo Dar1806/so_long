@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 11:27:58 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/26 16:40:05 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:12:27 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ typedef struct s_game
 	void	*mlx_window;
 	void	*img_wall;
 	void	*img_ground;
-	void	*img_pigeon;
+	void	*img_pigeon_left;
+	void	*img_pigeon_right;
 	void	*img_collectible;
 	void	*img_exit;
 	int		move_count;
@@ -63,5 +64,6 @@ int		move_right(t_game *g);
 int		move_up(t_game *g);
 int		move_down(t_game *g);
 int		v_e(t_game *g);
+void 	free_all(char **tab_map, t_game *game);
 
 #endif
