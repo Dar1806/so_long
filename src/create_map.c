@@ -6,147 +6,143 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 17:54:56 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/24 19:57:27 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:40:23 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	create_wall(void *mlx, void *mlx_window, char **tab_map)
+void	create_wall(t_game *g)
 {
 	int		width;
 	int		height;
-	void	*img_wall;
 	int		i;
 	int		j;
 
-	img_wall = mlx_xpm_file_to_image(mlx, "./images/wall.xpm", &width, &height);
-	if (!img_wall)
+	g->img_wall = mlx_xpm_file_to_image(g->mlx,
+			"./images/wall.xpm", &width, &height);
+	if (!g->img_wall)
 	{
 		ft_putstr_fd("Error\n Could not load image\n", 2);
 		return ;
 	}
 	i = -1;
-	while (tab_map[++i])
+	while (g->map[++i])
 	{
 		j = -1;
-		while (tab_map[i][++j])
+		while (g->map[i][++j])
 		{
-			if (tab_map[i][j] == '1')
-				mlx_put_image_to_window(mlx, mlx_window, img_wall,
-					j * 48, i * 48);
+			if (g->map[i][j] == '1')
+				mlx_put_image_to_window(g->mlx, g->mlx_window,
+					g->img_wall, j * 48, i * 48);
 		}
 	}
 }
 
-void	create_ground(void *mlx, void *mlx_window, char **tab_map)
+void	create_ground(t_game *g)
 {
 	int		width;
 	int		height;
-	void	*img_ground;
 	int		i;
 	int		j;
 
-	img_ground = mlx_xpm_file_to_image(mlx, "./images/ground.xpm",
-			&width, &height);
-	if (!img_ground)
+	g->img_ground = mlx_xpm_file_to_image(g->mlx,
+			"./images/ground.xpm", &width, &height);
+	if (!g->img_ground)
 	{
 		ft_putstr_fd("Error\n Could not load image\n", 2);
 		return ;
 	}
 	i = -1;
-	while (tab_map[++i])
+	while (g->map[++i])
 	{
 		j = -1;
-		while (tab_map[i][++j])
+		while (g->map[i][++j])
 		{
-			if (tab_map[i][j] == '0')
-				mlx_put_image_to_window(mlx, mlx_window, img_ground,
-					j * 48, i * 48);
+			if (g->map[i][j] == '0')
+				mlx_put_image_to_window(g->mlx, g->mlx_window,
+					g->img_ground, j * 48, i * 48);
 		}
 	}
 }
 
-void	create_p(void *mlx, void *mlx_window, char **tab_map)
+void	create_p(t_game *g)
 {
 	int		width;
 	int		height;
-	void	*img_pigeon;
 	int		i;
 	int		j;
 
-	img_pigeon = mlx_xpm_file_to_image(mlx, "./images/pigeon.xpm",
-			&width, &height);
-	if (!img_pigeon)
+	g->img_pigeon = mlx_xpm_file_to_image(g->mlx,
+			"./images/pigeon.xpm", &width, &height);
+	if (!g->img_pigeon)
 	{
 		ft_putstr_fd("Error\n Could not load image\n", 2);
 		return ;
 	}
 	i = -1;
-	while (tab_map[++i])
+	while (g->map[++i])
 	{
 		j = -1;
-		while (tab_map[i][++j])
+		while (g->map[i][++j])
 		{
-			if (tab_map[i][j] == 'P')
-				mlx_put_image_to_window(mlx, mlx_window, img_pigeon,
-					j * 48, i * 48);
+			if (g->map[i][j] == 'P')
+				mlx_put_image_to_window(g->mlx, g->mlx_window,
+					g->img_pigeon, j * 48, i * 48);
 		}
 	}
 }
 
-void	create_c(void *mlx, void *mlx_window, char **tab_map)
+void	create_c(t_game *g)
 {
 	int		width;
 	int		height;
-	void	*img_collectible;
 	int		i;
 	int		j;
 
-	img_collectible = mlx_xpm_file_to_image(mlx, "./images/collectible.xpm",
-			&width, &height);
-	if (!img_collectible)
+	g->img_collectible = mlx_xpm_file_to_image(g->mlx,
+			"./images/collectible.xpm", &width, &height);
+	if (!g->img_collectible)
 	{
 		ft_putstr_fd("Error\n Could not load image\n", 2);
 		return ;
 	}
 	i = -1;
-	while (tab_map[++i])
+	while (g->map[++i])
 	{
 		j = -1;
-		while (tab_map[i][++j])
+		while (g->map[i][++j])
 		{
-			if (tab_map[i][j] == 'C')
-				mlx_put_image_to_window(mlx, mlx_window, img_collectible,
-					j * 48, i * 48);
+			if (g->map[i][j] == 'C')
+				mlx_put_image_to_window(g->mlx, g->mlx_window,
+					g->img_collectible, j * 48, i * 48);
 		}
 	}
 }
 
-void	create_e(void *mlx, void *mlx_window, char **tab_map)
+void	create_e(t_game *g)
 {
 	int		width;
 	int		height;
-	void	*img_exit;
 	int		i;
 	int		j;
 
-	img_exit = mlx_xpm_file_to_image(mlx, "./images/exit.xpm",
+	g->img_exit = mlx_xpm_file_to_image(g->mlx, "./images/exit.xpm",
 			&width, &height);
-	if (!img_exit)
+	if (!g->img_exit)
 	{
 		ft_putstr_fd("Error\n Could not load image\n", 2);
 		return ;
 	}
 	i = -1;
-	while (tab_map[++i])
+	while (g->map[++i])
 	{
 		j = -1;
-		while (tab_map[i][++j])
+		while (g->map[i][++j])
 		{
-			if (tab_map[i][j] == 'E')
-				mlx_put_image_to_window(mlx, mlx_window, img_exit,
-					j * 48, i * 48);
+			if (g->map[i][j] == 'E')
+				mlx_put_image_to_window(g->mlx, g->mlx_window,
+					g->img_exit, j * 48, i * 48);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:03:22 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/24 19:21:00 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/26 14:03:44 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int	main(int ac, char **av)
 {
 	char	**tab_map;
+	t_game	*game;
 
+	game = malloc(sizeof(t_game));
 	if (ac != 2)
 	{
 		ft_putstr_fd("Error\nNeed a map", 1);
@@ -29,8 +31,8 @@ int	main(int ac, char **av)
 	}
 	if (map_valid(tab_map))
 	{
-		tab_map = create_tab(av[1]);
-		mlx_create(tab_map);
+		game->map = create_tab(av[1]);
+		mlx_create(game);
 	}
 	return (0);
 }
