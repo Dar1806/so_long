@@ -73,10 +73,3 @@ make
 make fclean    # Remove all build files and executable
 make clean     # Remove only object files
 ```
-
-## Notes
-
-- This project follows the 42 norm coding standard
-- All functions are exactly 25 lines or less
-- One variable declaration per line with a blank line after declarations
-- Maximum 80 characters per line
