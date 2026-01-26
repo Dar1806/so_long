@@ -23,12 +23,12 @@
 # include <fcntl.h>
 # include <stddef.h>
 
-char		*get_next_line(int fd);
-char		*fill_line(int fd, char *buffer, char *left_c);
-char		*ft_strchr(const char *str, int c);
-char		*ft_strdup(const char *s);
-int			ft_strlen(const char *str);
-char		*ft_strjoin(char const *s1, char const *s2);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
+char		*fill_line(int fd, char *buffer, char *left_c);
+char		*ft_strjoin(char const *s1, char const *s2);
+char		*ft_strchr(const char *str, int c);
+int			ft_strlen(const char *str);
+char		*ft_strdup(const char *s);
+char		*get_next_line(int fd);
 
 #endif

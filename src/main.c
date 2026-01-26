@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:03:22 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/26 17:17:27 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/26 19:05:42 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int	main(int ac, char **av)
 	}
 	if (map_valid(tab_map))
 	{
+		free_tab(tab_map);
 		game->map = create_tab(av[1]);
 		mlx_create(game);
 	}
-	free_all(tab_map, game);
 	return (0);
 }
