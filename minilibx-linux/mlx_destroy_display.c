@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_destroy_display.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 18:56:35 by mg                #+#    #+#             */
-/*   Updated: 2026/01/26 19:00:43 by nmeunier         ###   ########.fr       */
+/*   Updated: 2020/10/04 01:55:35 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,4 @@
 int	mlx_destroy_display(t_xvar *xvar)
 {
 	XCloseDisplay(xvar->display);
-	free(xvar);
-	return (0);
 }
