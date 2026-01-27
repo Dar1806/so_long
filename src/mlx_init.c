@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:40:44 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/26 23:39:26 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/27 14:51:55 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	free_all(t_game *game)
 		mlx_destroy_image(game->mlx, game->img_exit);
 	mlx_destroy_window(game->mlx, game->mlx_window);
 	mlx_destroy_display(game->mlx);
+	free(game->mlx);
 	free(game);
 }
 
