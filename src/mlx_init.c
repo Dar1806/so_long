@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:40:44 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/27 14:51:55 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/27 18:09:42 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	mlx_create(t_game *g)
 	create_c(g);
 	create_e(g);
 	track_exit(g);
+	g->move_count = 0;
 	mlx_key_hook(g->mlx_window, key_handler, g);
 	mlx_hook(g->mlx_window, 17, 0, destroy_w, g);
 	mlx_loop(g->mlx);
