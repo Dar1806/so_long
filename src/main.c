@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:03:22 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/26 22:31:27 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/28 22:49:55 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int ac, char **av)
 {
 	t_game	*game;
 
-	game = malloc(sizeof(t_game));
+	game = calloc(1, sizeof(t_game));
 	if (!game || ac != 2)
 	{
 		ft_putstr_fd("Error\nNeed a map", 1);

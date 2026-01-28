@@ -6,11 +6,12 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:06:42 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/28 17:16:42 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/28 22:47:56 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+#include <fcntl.h>
 
 char	**validate_and_return(char **tab_map)
 {
@@ -29,6 +30,8 @@ int	count_lines(char *map_path)
 	int		fd;
 
 	fd = open(map_path, O_RDONLY);
+	if (fd < 0)
+		return (0);
 	count = 0;
 	buffer = get_next_line(fd);
 	while (buffer)

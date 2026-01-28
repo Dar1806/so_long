@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 11:27:58 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/28 17:11:54 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/28 22:47:35 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdlib.h>
 # include <stdalign.h>
 # include <string.h>
+# include <fcntl.h>
+# include <unistd.h>
 # include "get_next_line.h"
 # include "libft.h"
 # include "../mlx/mlx.h"

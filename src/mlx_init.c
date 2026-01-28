@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:40:44 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/27 18:09:42 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/28 22:54:29 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	mlx_create(t_game *g)
 	int		map_width;
 	int		map_height;
 
+	map_width = 0;
+	map_height = 0;
 	g->mlx = mlx_init();
 	get_map_size(g, &map_width, &map_height);
 	g->mlx_window = mlx_new_window(g->mlx, map_height, map_width, "Game");
