@@ -5,116 +5,87 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/27 13:57:16 by nmeunier          #+#    #+#             */
-/*   Updated: 2025/11/27 13:57:16 by nmeunier         ###   ########.fr       */
+/*   Created: 2025/11/17 13:48:17 by afournie          #+#    #+#             */
+/*   Updated: 2026/01/28 17:16:04 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/get_next_line.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+static char	*append_buf(char *stash, char *buffer)
 {
-	size_t	j;
-	size_t	slen;
-	char	*subs;
-
-	j = 0;
-	if (!s)
-		return (0);
-	slen = ft_strlen(s);
-	if (start >= slen)
-	{
-		subs = malloc(1);
-		if (!subs)
-			return (0);
-		subs[0] = '\0';
-		return (subs);
-	}
-	if (len > slen - start)
-		len = slen - start;
-	subs = malloc(sizeof(char) * (len + 1));
-	if (!subs)
-		return (0);
-	while (s[start] && j < len)
-		subs[j++] = s[start++];
-	subs[j] = '\0';
-	return (subs);
-}
-
-char	*fill_line(int fd, char *buffer, char *left_c)
-{
-	ssize_t	readf;
 	char	*tmp;
 
-	readf = 1;
-	while (readf > 0)
+	if (!stash)
+		stash = ft_strdup("");
+	tmp = stash;
+	stash = ft_strjoin(tmp, buffer);
+	free(tmp);
+	return (stash);
+}
+
+static char	*read_doc(int fd, char *buffer, char *stash)
+{
+	int	read_line;
+
+	read_line = 1;
+	while (!(stash && ft_strchr(stash, '\n')) && read_line > 0)
 	{
-		readf = read(fd, buffer, BUFFER_SIZE);
-		if (readf == -1)
+		read_line = read(fd, buffer, BUFFER_SIZE);
+		if (read_line == -1)
 		{
-			free (left_c);
+			free(stash);
 			return (NULL);
 		}
-		else if (readf == 0)
+		if (read_line == 0)
 			break ;
-		buffer[readf] = '\0';
-		if (!left_c)
-			left_c = ft_strdup("");
-		tmp = left_c;
-		left_c = ft_strjoin(tmp, buffer);
-		free(tmp);
-		tmp = NULL;
+		buffer[read_line] = '\0';
+		stash = append_buf(stash, buffer);
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
-	return (left_c);
+	return (stash);
 }
 
-static char	*set_line(char *line)
+char	*set_line(char *line_buffer)
 {
-	ssize_t	i;
-	char	*left_c;
+	size_t	count;
+	size_t	total_len;
+	char	*stash;
 
-	i = 0;
-	while (line[i] != '\0' && line[i] != '\n')
-		i++;
-	if (line[i] == '\0')
+	count = 0;
+	while (line_buffer[count] != '\n' && line_buffer[count] != '\0')
+		count++;
+	if (line_buffer[count] == '\0')
 		return (NULL);
-	left_c = ft_substr(line, i + 1, ft_strlen(line) - i - 1);
-	if (!left_c || left_c[0] == '\0')
+	total_len = ft_strlen(line_buffer);
+	stash = ft_substr(line_buffer, count + 1, total_len - (count + 1));
+	if (stash && stash[0] == 0)
 	{
-		free(left_c);
-		return (NULL);
+		free(stash);
+		stash = NULL;
 	}
-	line[i + 1] = '\0';
-	return (left_c);
+	line_buffer[count + 1] = '\0';
+	return (stash);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*left_c;
-	char		*buffer;
+	static char	*stash;
 	char		*line;
+	char		*buffer;
 
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
-	if (fd < 0 || BUFFER_SIZE <= 0)
-	{
-		free(buffer);
-		free(left_c);
-		buffer = NULL;
-		left_c = NULL;
-		return (NULL);
-	}
-	line = fill_line(fd, buffer, left_c);
+	stash = read_doc(fd, buffer, stash);
 	free(buffer);
 	buffer = NULL;
-	if (!line)
-	{
-		left_c = NULL;
+	if (!stash)
 		return (NULL);
-	}
-	left_c = set_line(line);
+	line = stash;
+	stash = set_line(line);
 	return (line);
 }

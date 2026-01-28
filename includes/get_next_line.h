@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/27 13:57:46 by nmeunier          #+#    #+#             */
-/*   Updated: 2025/12/08 13:18:27 by nmeunier         ###   ########.fr       */
+/*   Created: 2025/11/17 13:48:06 by afournie          #+#    #+#             */
+/*   Updated: 2026/01/28 16:57:42 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define  BUFFER_SIZE 42
 # endif
 
-# include <unistd.h>
-# include <stdio.h>
 # include <stdlib.h>
-# include <fcntl.h>
-# include <stddef.h>
+# include <unistd.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
 
-void		*ft_memcpy(void *dest, const void *src, size_t n);
-char		*fill_line(int fd, char *buffer, char *left_c);
-char		*ft_strjoin(char const *s1, char const *s2);
-char		*ft_strchr(const char *str, int c);
-int			ft_strlen(const char *str);
-char		*ft_strdup(const char *s);
-char		*get_next_line(int fd);
+
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+size_t	ft_strlen(const char *s);
+char	*ft_strchr(const char *s, int i);
+char	*ft_strdup(const char *s);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*get_next_line(int fd);
 
 #endif

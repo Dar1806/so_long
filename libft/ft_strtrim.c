@@ -6,11 +6,12 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 11:37:25 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/26 16:21:25 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/28 17:07:57 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+#include "../includes/get_next_line.h"
 
 static int	ft_ischar(char c, const char *set)
 {

@@ -6,11 +6,21 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:06:42 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/21 15:39:14 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/28 17:16:42 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+char	**validate_and_return(char **tab_map)
+{
+	if (!tab_map[0])
+	{
+		free(tab_map);
+		return (NULL);
+	}
+	return (tab_map);
+}
 
 int	count_lines(char *map_path)
 {
@@ -56,5 +66,5 @@ char	**create_tab(char *map_path)
 		ligne++;
 	}
 	tab_map[ligne] = NULL;
-	return (tab_map);
+	return (validate_and_return(tab_map));
 }

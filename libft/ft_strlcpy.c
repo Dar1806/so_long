@@ -6,11 +6,12 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 18:51:57 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/26 16:21:25 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/28 17:07:44 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+#include "../includes/get_next_line.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
