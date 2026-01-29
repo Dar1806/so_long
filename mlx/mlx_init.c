@@ -17,7 +17,7 @@ void	*mlx_init()
 {
 	t_xvar	*xvar;
 	
-	if (!(xvar = malloc(sizeof(*xvar))))
+	if (!(xvar = calloc(1, sizeof(*xvar))))
 		return ((void*)0);
 	if ((xvar->display = XOpenDisplay("")) == 0)
 	{

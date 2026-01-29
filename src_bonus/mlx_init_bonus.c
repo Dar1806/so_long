@@ -6,13 +6,13 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:40:44 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/29 16:22:57 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/29 17:03:13 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	get_map_size(t_game *g, int *i, int *j)
+void	get_map_size(t_game *g, int *j, int *i)
 {
 	*i = 0;
 	while (g->map[*i])
@@ -29,9 +29,11 @@ void	mlx_create(t_game *g)
 
 	map_width = 0;
 	map_height = 0;
+	g->width = 48;
+	g->height = 48;
 	g->mlx = mlx_init();
 	get_map_size(g, &map_width, &map_height);
-	g->mlx_window = mlx_new_window(g->mlx, map_height, map_width, "Game");
+	g->mlx_window = mlx_new_window(g->mlx, map_width, map_height, "So Long");
 	create_ground(g);
 	create_wall(g);
 	create_p(g);
@@ -41,8 +43,6 @@ void	mlx_create(t_game *g)
 	track_exit(g);
 	g->move_count = 0;
 	g->modulo = 0;
-	g->width = 0;
-	g->height = 0;
 	mlx_key_hook(g->mlx_window, key_handler, g);
 	mlx_hook(g->mlx_window, 17, 0, destroy_w, g);
 	mlx_loop(g->mlx);
