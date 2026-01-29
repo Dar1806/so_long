@@ -6,7 +6,7 @@
 #    By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/19 11:27:45 by nmeunier          #+#    #+#              #
-#    Updated: 2026/01/29 02:13:30 by nmeunier         ###   ########.fr        #
+#    Updated: 2026/01/29 14:46:06 by nmeunier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,10 @@ SRCS = $(LIBFT) $(GNL) src/valid_map2.c src/create_tab.c src/valid_map.c \
 		src/mlx_init.c src/create_map.c src/key_handler.c src/move_player.c \
 		src/exit.c src/main.c
 
-SRCS_BONUS = $(LIBFT) $(GNL)  src_bonus/ennemy.c src/create_tab.c \
-		src_bonus/valid_map_bonus.c src/create_map.c src/key_handler.c \
-		src/move_player.c src/exit.c src/main.c src_bonus/mlx_init_bonus.c \
-		src/valid_map2.c src_bonus/ennemy_move.c
+SRCS_BONUS = $(LIBFT) $(GNL)  src_bonus/enemy.c src/create_tab.c \
+		src_bonus/valid_map_bonus.c src/create_map.c src_bonus/key_handler_bonus.c \
+		src_bonus/move_player_bonus.c src/exit.c src/main.c src_bonus/mlx_init_bonus.c \
+		src/valid_map2.c src_bonus/enemy_move.c
 
 CC = cc
 RM = rm -f
@@ -58,7 +58,7 @@ fclean: clean
 
 re: fclean all
 
-re_bonus: fclean bonus
+bonus_re: fclean bonus
 
-.PHONY: all bonus clean fclean re re_bonus
+.PHONY: all bonus clean fclean re bonus_re
 

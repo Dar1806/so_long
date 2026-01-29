@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 11:27:58 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/29 02:15:03 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/29 14:45:11 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,14 @@ typedef struct s_game
 	int		height;
 	int		exit_j;
 	int		exit_i;
-	void	*img_ennemy_right;
-	void	*img_ennemy_left;
+	void	*img_enemy_right;
+	void	*img_enemy_left;
 	int		enemy_j;
 	int		enemy_i;
 	int		enemy_direction;
+	int		player_i;
+	int		player_j;
+	int		modulo;
 }	t_game;
 
 char	**copy_in_tab(char **dst, const char *src, int ligne);
@@ -82,11 +85,18 @@ void	create_c(t_game *g);
 void	create_e(t_game *g);
 int		move_up(t_game *g);
 
-void	create_ennemy(t_game *g);
-void	move_ennemy(t_game *g);
-int		check_ennemy_collision(t_game *g);
+void	create_enemy(t_game *g);
+void	move_enemy(t_game *g);
+int		check_enemy_collision(t_game *g);
 int		game_loop(t_game *g);
 void	render_enemy(t_game *g);
 void	first_enemy(t_game *g);
+int		destroy_w_bonus(t_game *g);
+void	locate_enemy_p(t_game *g);
+void	enemy_to_player(t_game *g);
+void	move_enemy_up(t_game *g);
+void	move_enemy_down(t_game *g);
+void	move_enemy_right(t_game *g);
+void	move_enemy_left(t_game *g);
 
 #endif

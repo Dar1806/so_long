@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:40:44 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/29 02:08:54 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/29 16:22:57 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,14 @@ void	mlx_create(t_game *g)
 	create_p(g);
 	create_c(g);
 	create_e(g);
-	create_ennemy(g);
+	create_enemy(g);
 	track_exit(g);
 	g->move_count = 0;
+	g->modulo = 0;
+	g->width = 0;
+	g->height = 0;
 	mlx_key_hook(g->mlx_window, key_handler, g);
 	mlx_hook(g->mlx_window, 17, 0, destroy_w, g);
-	mlx_loop_hook(g->mlx, game_loop, g);
 	mlx_loop(g->mlx);
 }
 
@@ -64,10 +66,10 @@ void	free_all(t_game *game)
 		mlx_destroy_image(game->mlx, game->img_collectible);
 	if (game->img_exit)
 		mlx_destroy_image(game->mlx, game->img_exit);
-	if (game->img_ennemy_right)
-		mlx_destroy_image(game->mlx, game->img_ennemy_right);
-	if (game->img_ennemy_left)
-		mlx_destroy_image(game->mlx, game->img_ennemy_left);
+	if (game->img_enemy_right)
+		mlx_destroy_image(game->mlx, game->img_enemy_right);
+	if (game->img_enemy_left)
+		mlx_destroy_image(game->mlx, game->img_enemy_left);
 	mlx_destroy_window(game->mlx, game->mlx_window);
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
