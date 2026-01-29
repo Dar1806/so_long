@@ -6,15 +6,23 @@
 #    By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/19 11:27:45 by nmeunier          #+#    #+#              #
-#    Updated: 2026/01/28 17:05:23 by nmeunier         ###   ########.fr        #
+#    Updated: 2026/01/29 02:13:30 by nmeunier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = src/valid_map2.c src/create_tab.c src/valid_map.c gnl/get_next_line.c \
-		gnl/get_next_line_utils.c libft/ft_putstr_fd.c libft/ft_strlcpy.c \
-		libft/ft_strtrim.c src/main.c src/mlx_init.c src/create_map.c \
-		src/key_handler.c src/move_player.c libft/ft_putnbr_fd.c \
-		libft/ft_putchar_fd.c src/exit.c\
+LIBFT = libft/ft_putstr_fd.c libft/ft_strlcpy.c libft/ft_strtrim.c \
+		 libft/ft_putnbr_fd.c libft/ft_putchar_fd.c
+
+GNL = gnl/get_next_line.c gnl/get_next_line_utils.c
+
+SRCS = $(LIBFT) $(GNL) src/valid_map2.c src/create_tab.c src/valid_map.c \
+		src/mlx_init.c src/create_map.c src/key_handler.c src/move_player.c \
+		src/exit.c src/main.c
+
+SRCS_BONUS = $(LIBFT) $(GNL)  src_bonus/ennemy.c src/create_tab.c \
+		src_bonus/valid_map_bonus.c src/create_map.c src/key_handler.c \
+		src/move_player.c src/exit.c src/main.c src_bonus/mlx_init_bonus.c \
+		src/valid_map2.c src_bonus/ennemy_move.c
 
 CC = cc
 RM = rm -f
@@ -23,24 +31,34 @@ X11_LIB = -lXext -lX11 -lm -lz
 MLXLIB = -Lmlx -lmlx
 
 NAME = so_long
+NAME_BONUS = so_long_bonus
 OBJS = $(SRCS:.c=.o)
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 all: $(NAME)
+
+bonus: $(NAME_BONUS)
 
 $(NAME): $(OBJS)
 	make -C mlx
 	$(CC) $(CFLAGS) $(OBJS) $(MLXLIB) $(X11_LIB) -o $(NAME)
 
+$(NAME_BONUS): $(OBJS_BONUS)
+	make -C mlx
+	$(CC) $(CFLAGS) $(OBJS_BONUS) $(MLXLIB) $(X11_LIB) -o $(NAME_BONUS)
+
 %.o: %.c
 	$(CC) $(CFLAGS) -I/usr/include -Imlx -O3 -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(NAME_BONUS)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+re_bonus: fclean bonus
+
+.PHONY: all bonus clean fclean re re_bonus
 

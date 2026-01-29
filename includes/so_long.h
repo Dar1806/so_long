@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 11:27:58 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/28 22:47:35 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/29 02:15:03 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ typedef struct s_game
 	int		height;
 	int		exit_j;
 	int		exit_i;
+	void	*img_ennemy_right;
+	void	*img_ennemy_left;
+	int		enemy_j;
+	int		enemy_i;
+	int		enemy_direction;
 }	t_game;
 
 char	**copy_in_tab(char **dst, const char *src, int ligne);
@@ -76,5 +81,12 @@ void	create_p(t_game *g);
 void	create_c(t_game *g);
 void	create_e(t_game *g);
 int		move_up(t_game *g);
+
+void	create_ennemy(t_game *g);
+void	move_ennemy(t_game *g);
+int		check_ennemy_collision(t_game *g);
+int		game_loop(t_game *g);
+void	render_enemy(t_game *g);
+void	first_enemy(t_game *g);
 
 #endif

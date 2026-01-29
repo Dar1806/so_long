@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 15:28:07 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/26 23:01:00 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/29 02:17:01 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,21 @@ int	move_left(t_game *g)
 		j = -1;
 		while (g->map[i][++j])
 		{
-			if (g->map[i][j] == 'P' && (g->map[i][j - 1] == '0'
-				|| g->map[i][j - 1] == 'C' || (g->map[i][j - 1] == 'E'
-				&& valid_map_check_c(g->map))))
+			if (g->map[i][j] == 'P')
 			{
-				g->map[i][j - 1] = 'P';
-				mlx_put_image_to_window(g->mlx, g->mlx_window,
-					g->img_pigeon_left, (j - 1) * 48, i * 48);
-				mlx_put_image_to_window(g->mlx, g->mlx_window,
-					g->img_ground, j * 48, i * 48);
-				g->map[i][j] = '0';
-				return (1);
+				if (g->map[i][j - 1] == 'N')
+					return (destroy_w(g));
+				if (g->map[i][j - 1] == '0' || g->map[i][j - 1] == 'C'
+					|| (g->map[i][j - 1] == 'E' && valid_map_check_c(g->map)))
+				{
+					g->map[i][j - 1] = 'P';
+					mlx_put_image_to_window(g->mlx, g->mlx_window,
+						g->img_pigeon_left, (j - 1) * 48, i * 48);
+					mlx_put_image_to_window(g->mlx, g->mlx_window,
+						g->img_ground, j * 48, i * 48);
+					g->map[i][j] = '0';
+					return (1);
+				}
 			}
 		}
 	}
@@ -51,17 +55,21 @@ int	move_right(t_game *g)
 		j = -1;
 		while (g->map[i][++j])
 		{
-			if (g->map[i][j] == 'P' && (g->map[i][j + 1] == '0'
-				|| g->map[i][j + 1] == 'C' || (g->map[i][j + 1] == 'E'
-				&& valid_map_check_c(g->map))))
+			if (g->map[i][j] == 'P')
 			{
-				g->map[i][j + 1] = 'P';
-				mlx_put_image_to_window(g->mlx, g->mlx_window,
-					g->img_pigeon_right, (j + 1) * 48, i * 48);
-				mlx_put_image_to_window(g->mlx, g->mlx_window,
-					g->img_ground, j * 48, i * 48);
-				g->map[i][j] = '0';
-				return (1);
+				if (g->map[i][j + 1] == 'N')
+					return (destroy_w(g));
+				if (g->map[i][j + 1] == '0' || g->map[i][j + 1] == 'C'
+					|| (g->map[i][j + 1] == 'E' && valid_map_check_c(g->map)))
+				{
+					g->map[i][j + 1] = 'P';
+					mlx_put_image_to_window(g->mlx, g->mlx_window,
+						g->img_pigeon_right, (j + 1) * 48, i * 48);
+					mlx_put_image_to_window(g->mlx, g->mlx_window,
+						g->img_ground, j * 48, i * 48);
+					g->map[i][j] = '0';
+					return (1);
+				}
 			}
 		}
 	}
