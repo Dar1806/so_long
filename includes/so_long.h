@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 11:27:58 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/29 14:45:11 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/30 12:31:03 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,18 +85,18 @@ void	create_c(t_game *g);
 void	create_e(t_game *g);
 int		move_up(t_game *g);
 
-void	create_enemy(t_game *g);
-void	move_enemy(t_game *g);
 int		check_enemy_collision(t_game *g);
-int		game_loop(t_game *g);
-void	render_enemy(t_game *g);
-void	first_enemy(t_game *g);
-int		destroy_w_bonus(t_game *g);
-void	locate_enemy_p(t_game *g);
-void	enemy_to_player(t_game *g);
-void	move_enemy_up(t_game *g);
-void	move_enemy_down(t_game *g);
 void	move_enemy_right(t_game *g);
+void	enemy_to_player(t_game *g);
 void	move_enemy_left(t_game *g);
+int		destroy_w_bonus(t_game *g);
+void	move_enemy_down(t_game *g);
+void	locate_enemy_p(t_game *g);
+void	move_enemy_up(t_game *g);
+void	render_enemy(t_game *g);
+void	create_enemy(t_game *g);
+void	first_enemy(t_game *g);
+void	move_enemy(t_game *g);
+int		game_loop(t_game *g);
 
 #endif
