@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 18:02:30 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/30 11:14:33 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/30 12:50:05 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int	valid_map_border(char **tab_map)
 	{
 		j = -1;
 		while (tab_map[i][++j])
-			if (((tab_map[i][j] != '1' && i == 0)
-				|| ((tab_map[i][j] != '1') && i == last_line)
-				|| ((tab_map[i][0] != '1')
-				|| (tab_map[i][last_column] != '1'))))
+		{
+			if (((i == 0 || i == last_line) && tab_map[i][j] != '1')
+			|| ((j == 0 || j == last_column) && tab_map[i][j] != '1'))
 				return (0);
+		}
 	}
 	return (1);
 }

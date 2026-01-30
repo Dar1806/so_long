@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:21:02 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/30 12:26:18 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/01/30 12:50:39 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ int	valid_map_stuck(char **tab_map)
 	{
 		i = -1;
 		change = 0;
-		while (tab_map[++i + 1])
+		while (tab_map[++i])
 		{
 			j = -1;
-			while (tab_map[i][++j + 1])
+			while (tab_map[i][++j])
 			{
 				if (tab_map[i][j] == 'P')
 				{
