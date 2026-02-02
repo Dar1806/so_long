@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 11:27:58 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/02/02 15:59:54 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/02/02 16:26:04 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ void	create_p(t_game *g);
 void	create_c(t_game *g);
 void	create_e(t_game *g);
 int		move_up(t_game *g);
-
 
 int		check_enemy_collision(t_game *g);
 void	move_enemy_right(t_game *g);
