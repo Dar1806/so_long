@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:03:22 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/02/02 15:59:30 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/02/02 16:33:00 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	main(int ac, char **av)
 	game = calloc(1, sizeof(t_game));
 	if (!game || ac != 2)
 	{
-		ft_putstr_fd("Error\nNeed a map\n", 1);
+		ft_putstr_fd("Error\nNeed a map in argument\n", 1);
 		free(game);
 		return (0);
 	}
 	if (!valid_name(av[1]))
 	{
-		ft_putstr_fd("Error\nMap name invalid\n", 1);
+		ft_putstr_fd("Error\nMap name invalid, need a .ber file\n", 1);
 		free(game);
 		return (0);
 	}

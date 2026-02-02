@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:06:42 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/30 12:29:47 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/02/02 16:38:16 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ char	**create_tab(char *map_path)
 		buffer = get_next_line(fd);
 		ligne++;
 	}
-	tab_map[ligne] = NULL;
+	tab_map[ligne] = NULL;	
+	close(fd);
 	return (validate_and_return(tab_map));
 }
