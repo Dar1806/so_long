@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:21:02 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/30 12:50:39 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/02/02 15:53:37 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,4 +111,29 @@ int	load_verif_map(t_game *game, char *map_path)
 	free_tab(tab_map);
 	game->map = create_tab(map_path);
 	return (1);
+}
+
+int	error(char **tab_map)
+{
+	if (!valid_map_border(tab_map))
+	{
+		ft_putstr_fd("Error \nThe map is not surrounded by walls\n", 1);
+		return (1);
+	}
+	if (!valid_map_pec(tab_map) || !!valid_map_letters(tab_map)(tab_map))
+	{
+		ft_putstr_fd("Error \nThe map does not contains the valid PEC", 1);
+		return (1);
+	}
+	if (!valid_map_size(tab_map))
+	{
+		ft_putstr_fd("Error \nThe size of the map is not valid\n", 1);
+		return (1);
+	}
+	if (!valid_map_stuck(tab_map))
+	{
+		ft_putstr_fd("The player cannot take all of the C\n", 1);
+		return (1);
+	}
+	return (0);
 }

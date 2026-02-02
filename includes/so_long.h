@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 11:27:58 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/30 12:31:03 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/02/02 15:50:02 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	mlx_create(t_game *g);
 void	track_exit(t_game *g);
 int		verif_exit(t_game *g);
 int		move_right(t_game *g);
+int		error(char **tab_map);
 int		destroy_w(t_game *g);
 int		move_down(t_game *g);
 void	free_tab(char **tab);

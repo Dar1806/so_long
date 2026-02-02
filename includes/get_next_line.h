@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 13:48:06 by afournie          #+#    #+#             */
-/*   Updated: 2026/01/28 16:57:42 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/02/02 15:52:53 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-#include <fcntl.h>
-#include <stdio.h>
-#include <unistd.h>
-
+# include <fcntl.h>
+# include <stdio.h>
+# include <unistd.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlen(const char *s);
