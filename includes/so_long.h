@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 11:27:58 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/02/02 15:50:02 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/02/02 15:59:54 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int		valid_map_size(char **tab_map);
 int		valid_map_pec(char **tab_map);
 int		valid_map_check_c(char **tab);
 char	**create_tab(char *map_path);
+int		valid_name(char *map_path);
 int		map_valid(char **tab_map);
 void	create_ground(t_game *g);
 void	create_wall(t_game *g);
@@ -85,6 +86,7 @@ void	create_p(t_game *g);
 void	create_c(t_game *g);
 void	create_e(t_game *g);
 int		move_up(t_game *g);
+
 
 int		check_enemy_collision(t_game *g);
 void	move_enemy_right(t_game *g);

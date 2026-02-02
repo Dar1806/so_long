@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 18:02:30 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/02/02 15:52:46 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/02/02 15:57:10 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,10 @@ int	valid_map_letters(char **tab_map)
 
 int	map_valid(char **tab_map)
 {
-	if (!error(tab_map))
+	if (error(tab_map))
+	{
 		return (0);
+	}
 	ft_putstr_fd("Map is valid\n", 1);
 	return (1);
 }
