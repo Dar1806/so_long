@@ -6,12 +6,12 @@
 #    By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/19 11:27:45 by nmeunier          #+#    #+#              #
-#    Updated: 2026/01/29 14:46:06 by nmeunier         ###   ########.fr        #
+#    Updated: 2026/02/03 17:40:30 by nmeunier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LIBFT = libft/ft_putstr_fd.c libft/ft_strlcpy.c libft/ft_strtrim.c \
-		 libft/ft_putnbr_fd.c libft/ft_putchar_fd.c
+		 libft/ft_putnbr_fd.c libft/ft_putchar_fd.c libft/ft_itoa.c
 
 GNL = gnl/get_next_line.c gnl/get_next_line_utils.c
 
@@ -22,7 +22,7 @@ SRCS = $(LIBFT) $(GNL) src/valid_map2.c src/create_tab.c src/valid_map.c \
 SRCS_BONUS = $(LIBFT) $(GNL)  src_bonus/enemy.c src/create_tab.c \
 		src_bonus/valid_map_bonus.c src/create_map.c src_bonus/key_handler_bonus.c \
 		src_bonus/move_player_bonus.c src/exit.c src/main.c src_bonus/mlx_init_bonus.c \
-		src/valid_map2.c src_bonus/enemy_move.c
+		src/valid_map2.c src_bonus/enemy_move.c src_bonus/moves.c
 
 CC = cc
 RM = rm -f

@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 11:27:58 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/02/02 16:26:04 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/02/03 17:52:43 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_game
 	int		player_i;
 	int		player_j;
 	int		modulo;
+	char	*moves_str;
 }	t_game;
 
 char	**copy_in_tab(char **dst, const char *src, int ligne);
@@ -93,10 +94,12 @@ void	enemy_to_player(t_game *g);
 void	move_enemy_left(t_game *g);
 int		destroy_w_bonus(t_game *g);
 void	move_enemy_down(t_game *g);
+char	*moves_to_string(int moves);
 void	locate_enemy_p(t_game *g);
 void	move_enemy_up(t_game *g);
 void	render_enemy(t_game *g);
 void	create_enemy(t_game *g);
+int		render_moves(t_game *g);
 void	first_enemy(t_game *g);
 void	move_enemy(t_game *g);
 int		game_loop(t_game *g);

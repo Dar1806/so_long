@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:40:44 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/01/29 17:03:13 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/02/03 17:52:35 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ void	mlx_create(t_game *g)
 	track_exit(g);
 	g->move_count = 0;
 	g->modulo = 0;
+	g->moves_str = NULL;
 	mlx_key_hook(g->mlx_window, key_handler, g);
 	mlx_hook(g->mlx_window, 17, 0, destroy_w, g);
+	mlx_loop_hook(g->mlx, render_moves, g);
 	mlx_loop(g->mlx);
 }
 
@@ -52,8 +54,7 @@ void	free_all(t_game *game)
 {
 	if (!game)
 		return ;
-	if (game->map)
-		free_tab(game->map);
+	free_tab(game->map);
 	if (game->img_wall)
 		mlx_destroy_image(game->mlx, game->img_wall);
 	if (game->img_ground)
@@ -70,6 +71,8 @@ void	free_all(t_game *game)
 		mlx_destroy_image(game->mlx, game->img_enemy_right);
 	if (game->img_enemy_left)
 		mlx_destroy_image(game->mlx, game->img_enemy_left);
+	if (game->moves_str)
+		free(game->moves_str);
 	mlx_destroy_window(game->mlx, game->mlx_window);
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
