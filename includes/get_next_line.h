@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 13:48:06 by afournie          #+#    #+#             */
-/*   Updated: 2026/02/02 15:52:53 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/02/03 17:26:24 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define  BUFFER_SIZE 42
+#  define BUFFER_SIZE 42
 # endif
 
 # include <stdlib.h>
