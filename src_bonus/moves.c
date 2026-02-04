@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 17:39:33 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/02/03 17:52:13 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/02/04 17:40:32 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	render_moves(t_game *g)
 		mlx_put_image_to_window(g->mlx, g->mlx_window, g->img_wall, x, 0);
 		x += 48;
 	}
-	mlx_string_put(g->mlx, g->mlx_window, 20, 20,
+	mlx_string_put(g->mlx, g->mlx_window, 5, 15,
 		0xFFFFFF, g->moves_str);
 	return (0);
 }
